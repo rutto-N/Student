@@ -30,12 +30,13 @@ public class AppBoostrap implements ServletContextListener {
     }
 
     private void createTables(Connection connection) throws SQLException {
-        String createStudentsTableSql = "CREATE TABLE IF NOT EXISTS users(id int auto_increment primary key," +
+        String createUsersTableSql = "CREATE TABLE IF NOT EXISTS users(id int auto_increment primary key," +
                 "username varchar(255), email varchar(255), password varchar(255))";
-
-
-        PreparedStatement statement = connection.prepareStatement(createStudentsTableSql);
+        PreparedStatement statement = connection.prepareStatement(createUsersTableSql);
         statement.executeUpdate();
-        System.out.println("Creating users Table : " + createStudentsTableSql);
+        String createCoursesTableSql="CREATE TABLE IF NOT EXISTS courses(courseId int auto_increment primary key," +
+                "courseName varchar(255))";
+        statement.executeUpdate(createCoursesTableSql);
+        System.out.println("Creating users Table : " + createUsersTableSql);
     }
 }

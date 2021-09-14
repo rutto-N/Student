@@ -1,36 +1,56 @@
 package com.student.database;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
+
+import javax.sql.DataSource;
 import java.sql.*;
 
 public class DbUtil {
-    private Connection conn=null;
+    private Connection conn = null;
+    private static DataSource dataSource;
+    private MysqlDataSource mysqlDataSource = new MysqlDataSource();
 
 
     public DbUtil() {
-        try {
-            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/sms", "root", "");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
+        mysqlDataSource.setURL("jdbc:mysql://localhost:3306/sms");
+        mysqlDataSource.setUser("root");
+        mysqlDataSource.setPassword("");
+    }
+
+
+    public static DataSource getInstance() {
+        if (dataSource == null)
+            dataSource = new DbUtil().getMysqlDataSource();
+
+        return dataSource;
+    }
+
+    public MysqlDataSource getMysqlDataSource() {
+        return mysqlDataSource;
+    }
+
+    public void setMysqlDataSource(MysqlDataSource mysqlDataSource) {
+        this.mysqlDataSource = mysqlDataSource;
     }
 
     public Connection getDbConnection() throws SQLException {
 
+        conn = getInstance().getConnection();
 
         return conn;
 
     }
 
-    public ResultSet execQuery(String sql){
-        if  (sql == null || sql.trim().equals(""))
+    public ResultSet execQuery(String sql) {
+        if (sql == null || sql.trim().equals(""))
             return null;
 
         try {
             PreparedStatement statement = conn.prepareStatement(sql);
             return statement.executeQuery();
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
         }
@@ -39,8 +59,8 @@ public class DbUtil {
 
     }
 
-    public boolean execUpdate(String sql){
-        if  (sql == null || sql.trim().equals(""))
+    public boolean execUpdate(String sql) {
+        if (sql == null || sql.trim().equals(""))
             return false;
 
         try {
@@ -48,7 +68,7 @@ public class DbUtil {
             statement.executeUpdate();
             return true;
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
 
         }
