@@ -1,21 +1,21 @@
-package com.student.action;
+package com.student.action.auth;
 
-import com.student.database.DbUtil;
+import com.student.dao.UserDao;
 import com.student.models.User;
-import com.student.utils.Utils;
+import org.apache.commons.beanutils.BeanUtils;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.lang.reflect.InvocationTargetException;
+
+@WebServlet(name="Login",urlPatterns ="/login" )
+
 
 public class SignInAction extends HttpServlet {
     public static final String NAVBAR="<nav class=\"navbar navbar-inverse\">" +
@@ -29,8 +29,8 @@ public class SignInAction extends HttpServlet {
             "      <li ><a href=\"./view\">view </a></li>" +
             "    </ul>" +
             "       <ul class=\"nav navbar-nav navbar-right\">" +
-            "      <li><a><button class=\"btn btn-danger navbar-btn\">Register</button></a></li>" +
-            "      <li><a><button class=\"btn btn-success navbar-btn\">Login</button></a></li>" +
+//            "      <li><a href=\"./register\"><button class=\"btn btn-danger navbar-btn\">Register</button></a></li>" +
+            "      <li><a href=\"./logout\"><button class=\"btn btn-danger btn-md navbar-btn\">Logout</button></a></li>" +
             "    </ul>" +
             "  </div>" +
             "</nav>";
@@ -45,7 +45,7 @@ public class SignInAction extends HttpServlet {
         display.println(HTML_START+""+NAVBAR);
 
         display.println("<div class=\"container \">\n" +
-                "  <h2>Add Student Form</h2>\n" +
+                "  <h2>Login Form</h2>\n" +
                 "  <form action=\"./login\" method=\"POST\">\n" +
                 "    <div class=\"form-group\">\n" +
                 "      <label for=\"email\">Email:</label>\n" +
@@ -55,9 +55,16 @@ public class SignInAction extends HttpServlet {
                 "      <label for=\"password\">Password:</label>\n" +
                 "      <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Enter password\">\n" +
                 "    </div>\n" +
+                "    <div class=\"form-group\">\n" +
+                " <h5>Dont have an account <a href=\".register\">Register</a></h5>"+
+                "    </div>\n" +
+
                 "    <button type=\"submit\" class=\"btn btn-default\">Login</button>\n" +
                 "  </form>\n" +
                 "</div>\n");
+
+
+        req.getSession().invalidate();
 
 
     }
@@ -66,22 +73,29 @@ public class SignInAction extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter display = resp.getWriter();
-        HttpSession session=req.getSession();
+        HttpSession session=req.getSession(true);
 
 
         if (!req.getParameter("email").isEmpty() && !req.getParameter("password").isEmpty()){
-            String email=req.getParameter("email");
-            String password=req.getParameter("password");
-            String sql="SELECT * FROM users WHERE email='"+email+"' AND password='"+password+"'";
-            DbUtil db = (DbUtil) getServletContext().getAttribute("db");
-            ResultSet resultSet=db.execQuery(sql);
-            User user=new Utils().resultSetToUser(resultSet);
+            User user=new User();
 
+            try {
+                BeanUtils.populate(user,req.getParameterMap());
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+          UserDao userDao=new UserDao();
+            user=userDao.getUser(user);
+            if (user!=null){
+                session.setAttribute("id",user.getId());
 
-            session.setAttribute("id",user.getId());
-            session.setAttribute("email",user.getEmail());
+                session.setAttribute("email",user.getEmail());
+                resp.sendRedirect("./users/view");
 
-            resp.sendRedirect("./addStudent");
+            }else
+                resp.sendRedirect("./login");
 
 
         }else {

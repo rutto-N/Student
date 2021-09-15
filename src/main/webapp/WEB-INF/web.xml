@@ -4,42 +4,6 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-    <servlet-name>Register</servlet-name>
-    <servlet-class>com.student.action.RegisterUserAction</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Register</servlet-name>
-    <url-pattern>/register</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>Login</servlet-name>
-    <servlet-class>com.student.action.SignInAction</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/login</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>Logout</servlet-name>
-    <servlet-class>com.student.action.LogOutAction</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Logout</servlet-name>
-    <url-pattern>/logout</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>AddStudent</servlet-name>
-    <servlet-class>com.student.action.AddStudent</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AddStudent</servlet-name>
-    <url-pattern>/addStudent</url-pattern>
-  </servlet-mapping>
 
-
-  <listener>
-    <listener-class>com.student.database.AppBoostrap</listener-class>
-  </listener>
 
 </web-app>

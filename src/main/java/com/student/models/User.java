@@ -1,6 +1,8 @@
 package com.student.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
 
     private String username;
@@ -10,8 +12,8 @@ public class User {
     public User() {
     }
 
-    public User(int id, String username, String email, String password) {
-        this.id = id;
+    public User( String username, String email, String password) {
+
         this.username = username;
         this.email = email;
         this.password = password;
