@@ -52,7 +52,7 @@ public class ViewCourse extends HttpServlet {
         List<Course> courseList;
         courseList = courseDao.view();
         display.print("<div class=\"row \">");
-        display.print("<div class=\"col-lg-8\" style={margin:10%;}>");
+        display.print("<div class=\"col-md-8 col-md-offset-2\" style={margin:10%;}>");
 
         display.print("<table class=\"table center table-hover table-responsive table-bordered\">");
         display.print("<caption class=\"text-center\">Courses</caption>");
@@ -68,8 +68,8 @@ public class ViewCourse extends HttpServlet {
             display.print("<td>" + course.getCourseId() + "</td>");
             display.print("<td>" + course.getCourseAbbr() + "</td>");
             display.print("<td>" + course.getCourseName() + "</td>");
-            display.print("<td><button id=\"\" class=\"btn btn-success btn-sm \">Edit</button></td>");
-            display.print("<td><button id=\"\" class=\"btn btn-danger btn-sm text-center\">Delete</button></td>");
+            display.print("<td><a><button id=\"\" class=\"btn btn-success btn-sm \">Edit</button></a></td>");
+            display.print("<td><a href=\"delete?id="+course.getCourseId()+"\"><button id=\"\" class=\"btn btn-danger btn-sm text-center\">Delete</button></a></td>");
             display.print("</tr>");
         }
 

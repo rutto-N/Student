@@ -25,7 +25,7 @@ public class SignInAction extends HttpServlet {
             "    </div>" +
             "    <ul class=\"nav navbar-nav\">" +
             "      <li ><a href=\"./\">Home</a></li>" +
-            "      <li ><a href=\"./addStudent\">add Student</a></li>" +
+            "      <li ><a href=\"./student/add\">add Student</a></li>" +
             "      <li ><a href=\"./view\">view </a></li>" +
             "    </ul>" +
             "       <ul class=\"nav navbar-nav navbar-right\">" +
@@ -44,8 +44,9 @@ public class SignInAction extends HttpServlet {
         PrintWriter display=resp.getWriter();
         display.println(HTML_START+""+NAVBAR);
 
-        display.println("<div class=\"container \">\n" +
+        display.println("<div class=\"card-body col-md-4 col-md-offset-4 \">\n" +
                 "  <h2>Login Form</h2>\n" +
+                "<hr>"+
                 "  <form action=\"./login\" method=\"POST\">\n" +
                 "    <div class=\"form-group\">\n" +
                 "      <label for=\"email\">Email:</label>\n" +
@@ -56,10 +57,10 @@ public class SignInAction extends HttpServlet {
                 "      <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Enter password\">\n" +
                 "    </div>\n" +
                 "    <div class=\"form-group\">\n" +
-                " <h5>Dont have an account <a href=\".register\">Register</a></h5>"+
+                " <h5>Dont have an account? <a href=\"./register\">Register</a></h5>"+
                 "    </div>\n" +
 
-                "    <button type=\"submit\" class=\"btn btn-default\">Login</button>\n" +
+                "    <button type=\"submit\" class=\"btn btn-success\">Login</button>\n" +
                 "  </form>\n" +
                 "</div>\n");
 

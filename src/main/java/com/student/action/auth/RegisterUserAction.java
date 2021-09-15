@@ -43,7 +43,7 @@ public class RegisterUserAction extends HttpServlet {
         PrintWriter display=resp.getWriter();
         display.println(HTML_START+""+NAVBAR);
 
-        display.println("<div class=\"container \">\n" +
+        display.println("<div class=\"container col-md-4 col-md-offset-4 \">\n" +
                 "  <h2>Registration Form</h2>\n" +
                 "  <form action=\"./register\" method=\"POST\">\n" +
                 "    <div class=\"form-group\">\n" +
@@ -77,7 +77,6 @@ public class RegisterUserAction extends HttpServlet {
         if (req.getParameter("password").trim().equals
                 (req.getParameter("re-password").trim())) {//confirm passwords match
             User user = new User();
-
             try {
                 BeanUtils.populate(user,req.getParameterMap());
             } catch (IllegalAccessException e) {
@@ -86,15 +85,9 @@ public class RegisterUserAction extends HttpServlet {
                 e.printStackTrace();
             }
 
-//            String sql = "INSERT INTO users(username,email,password) values('" + user.getUsername() + "'," +
-//                    "'" + user.getEmail() + "','" + PasswordEncrypt.encryptText(user.getPassword()) + "')";
-
-
             UserDao userDao=new UserDao();
-            System.out.println(userDao.add(user));
             if (userDao.add(user)){
                 System.out.println("Added successfully");
-
                 resp.sendRedirect("./login");
             }else
                 resp.sendRedirect("./register");

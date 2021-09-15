@@ -18,7 +18,6 @@ import java.util.List;
         urlPatterns ={"/student/view","/student/"}
 )
 
-
 public class ViewStudents extends HttpServlet {
     public static final String NAVBAR="<nav class=\"navbar navbar-inverse\">" +
             "  <div class=\"container-fluid\">" +
@@ -31,7 +30,6 @@ public class ViewStudents extends HttpServlet {
             "      <li ><a href=\"./view\">View Students</a></li>" +
             "    </ul>" +
             "       <ul class=\"nav navbar-nav navbar-right\">" +
-//            "      <li><button class=\"btn btn-danger navbar-btn\">Register</button></li>" +
             "      <li><a href=\"../logout\"><button class=\"btn btn-danger navbar-btn\">Logout</button></a></li>" +
             "    </ul>" +
             "  </div>" +
@@ -46,12 +44,13 @@ public class ViewStudents extends HttpServlet {
 
         PrintWriter display= resp.getWriter();
         display.println(HTML_START+""+NAVBAR);
+
         StudentDao studentDao =new StudentDao();
         List<Student> studentList;
         studentList = studentDao.view();
 
         display.print("<div class=\"row \">");
-        display.print("<div class=\"col-lg-8\" style={margin:10%;}>");
+        display.print("<div class=\"col-md-8 col-md-offset-2\" style={margin:10%;}>");
 
         display.print("<table class=\"table table-center table-hover table-responsive table-bordered\">");
         display.print("<caption class=\"text-center\">Students</caption>");
@@ -67,8 +66,8 @@ public class ViewStudents extends HttpServlet {
             display.print("<td>" +student.getStudentId() + "</td>");
             display.print("<td>" +student.getName() + "</td>");
             display.print("<td>" +student.getEmail() + "</td>");
-            display.print("<td><button id=\"\" class=\"btn btn-success btn-sm \">Edit</button></td>");
-            display.print("<td><button id=\"\" class=\"btn btn-danger btn-sm text-center\">Delete</button>" +
+            display.print("<td><a href=\"edit?id="+student.getStudentId()+"\"><button  class=\"btn btn-success btn-sm \">Edit</button></a></td>");
+            display.print("<td><a href=\"delete?id="+student.getStudentId()+"\"><button class=\"btn btn-danger btn-sm text-center\">Delete</button></a>" +
                     "</td>");
 
             display.print("</tr>");

@@ -46,9 +46,12 @@ public class AddStudentAction extends HttpServlet {
         PrintWriter display=resp.getWriter();
         display.println(HTML_START+""+NAVBAR);
 
-        display.println("<div class=\"container \">\n" +
-                "  <h2>Add Student Form</h2>\n" +
-                "  <form action=\"./add\" method=\"POST\">\n" +
+        display.println("<div class=\"row \">\n" );
+
+
+                display.println("<div class=\"col-md-4 col-md-offset-4\">\n" +
+                "  <h2>Add Student </h2>\n" +
+                "  <form class=\"form-horizontal\" action=\"./add\" method=\"POST\">\n" +
                 "    <div class=\"form-group\">\n" +
                 "      <label for=\"name\">Name:</label>\n" +
                 "      <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" placeholder=\"Enter name\">\n" +
@@ -71,7 +74,8 @@ public class AddStudentAction extends HttpServlet {
                 "    </div>\n" +
                 "    <button type=\"submit\" class=\"btn btn-success\">Submit</button>\n" +
                 "  </form>\n" +
-                "</div>\n");
+                "</div>\n" +
+                        "</div>");
 
     }
 

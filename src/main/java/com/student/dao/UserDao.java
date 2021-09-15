@@ -13,32 +13,27 @@ public class UserDao  extends DbUtil implements CrudI<User>{
 
     @Override
     public boolean add(User user) {
-        String name= user.getUsername();
-        String email= user.getEmail();
-        String password= user.getPassword();
-        System.out.println(name+","+email+"."+password);
 
-        String sql = "INSERT INTO users(username,email,password) values('" +name + "'," +
-                "'" + email + "','" + PasswordEncrypt.encryptText(user.getPassword()) + "')";
-        System.out.println(sql);
-        boolean result=execUpdate(sql);
-
-        return result;
+        String sql = "INSERT INTO users(username,email,password) values('" + user.getUsername() + "'," +
+                "'" + user.getEmail() + "','" + PasswordEncrypt.encryptText(user.getPassword()) + "')";
+        System.out.println(sql+"Ddaaaaao");
+        return execUpdate(sql);
     }
 
     @Override
     public List<User> view() {
         List<User> userList=new ArrayList<>();
         String sql = "SELECT * FROM users";
-        ResultSet rs=execQuery(sql);
+        ResultSet resultSet=execQuery(sql);
         try{
-            while (rs.next()) {
+            while (resultSet.next()) {
 
-                User user = new User(
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4)
-                );
+                User user = new User();
+                user.setId(resultSet.getInt(1));
+                user.setUsername(resultSet.getString(2));
+                user.setEmail(resultSet.getString(3));
+                user.setPassword(resultSet.getString(4));
+
                 userList.add(user);
 
             }
@@ -49,6 +44,12 @@ public class UserDao  extends DbUtil implements CrudI<User>{
         return userList;
 
 
+    }
+
+    @Override
+    public boolean delete(User user) {
+        String sql="DELETE FROM users WHERE id="+user.getId();
+        return execUpdate(sql);
     }
 
     public User getUser(User user){

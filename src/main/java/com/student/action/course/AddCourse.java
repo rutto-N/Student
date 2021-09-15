@@ -46,7 +46,7 @@ public class AddCourse extends HttpServlet {
         PrintWriter display=resp.getWriter();
         display.println(HTML_START+""+NAVBAR);
 
-        display.println("<div class=\"container \">\n" +
+        display.println("<div class=\"col-md-4 col-md-offset-4 \">\n" +
                 "  <h2>Add Student Form</h2>\n" +
                 "  <form action=\"./add\" method=\"POST\">\n" +
                 "    <div class=\"form-group\">\n" +

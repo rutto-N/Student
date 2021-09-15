@@ -15,4 +15,9 @@ public class ExamDao implements CrudI<Exam> {
     public List<Exam> view() {
         return null;
     }
+
+    @Override
+    public boolean delete(Exam exam) {
+        return false;
+    }
 }

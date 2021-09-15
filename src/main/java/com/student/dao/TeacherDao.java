@@ -16,4 +16,9 @@ public class TeacherDao implements CrudI<Teacher> {
     public List<Teacher> view() {
         return null;
     }
+
+    @Override
+    public boolean delete(Teacher teacher) {
+        return false;
+    }
 }

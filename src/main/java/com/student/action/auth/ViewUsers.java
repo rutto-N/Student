@@ -48,7 +48,7 @@ public class ViewUsers extends HttpServlet {
         List<User> users;
         users = userDao.view();
         display.print("<div class=\"row \">");
-        display.print("<div class=\"col-lg-8\" style={margin:10%;}>");
+        display.print("<div class=\"col-md-8 col-md-offset-2\" style={margin:10%;}>");
 
         display.print("<table class=\"table center table-hover table-responsive table-bordered\">");
         display.print("<caption class=\"text-center\">Users</caption>");
@@ -61,11 +61,11 @@ public class ViewUsers extends HttpServlet {
 
         for (User user : users){
             display.print("<tr>");
-            display.print("<td>" + user.getUsername() + "</td>");
+            display.print("<td>" + user.getId() + "</td>");
             display.print("<td>" + user.getUsername() + "</td>");
             display.print("<td>" + user.getEmail() + "</td>");
-            display.print("<td><button id=\"\" class=\"btn btn-success btn-sm \">Edit</button></td>");
-            display.print("<td><button id=\"\" class=\"btn btn-danger btn-sm text-center\">Delete</button></td>");
+            display.print("<td><a><button class=\"btn btn-success btn-sm \">Edit</button></a></td>");
+            display.print("<td><a href=\"delete?id="+user.getId()+"\"><button class=\"btn btn-danger btn-sm text-center\">Delete</button></a></td>");
             display.print("</tr>");
         }
 

@@ -3,6 +3,7 @@ package com.student.dao;
 import com.student.CrudI;
 import com.student.database.DbUtil;
 import com.student.models.Course;
+import com.student.models.Student;
 import com.student.models.Teacher;
 import com.student.models.User;
 
@@ -25,15 +26,15 @@ public class CourseDao extends DbUtil implements CrudI<Course> {
         List<Course> courseList=new ArrayList<>();
 
         String sql="SELECT * FROM courses";
-        ResultSet rs=execQuery(sql);
+        ResultSet resultSet=execQuery(sql);
         try{
-            while (rs.next()) {
+            while (resultSet.next()) {
 
                 Course course = new Course();
 
-                        course.setCourseId(rs.getInt(1));
-                        course.setCourseAbbr(rs.getString(2));
-                        course.setCourseName(rs.getString(3));
+                        course.setCourseId(resultSet.getInt(1));
+                        course.setCourseAbbr(resultSet.getString(2));
+                        course.setCourseName(resultSet.getString(3));
 
                 courseList.add(course);
 
@@ -45,4 +46,11 @@ public class CourseDao extends DbUtil implements CrudI<Course> {
 
         return courseList;
     }
+    @Override
+    public boolean delete(Course course) {
+        String sql="DELETE FROM courses WHERE courseId="+course.getCourseId();
+        return execUpdate(sql);
+    }
 }
+
+
