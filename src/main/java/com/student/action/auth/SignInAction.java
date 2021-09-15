@@ -30,7 +30,7 @@ public class SignInAction extends HttpServlet {
             "    </ul>" +
             "       <ul class=\"nav navbar-nav navbar-right\">" +
 //            "      <li><a href=\"./register\"><button class=\"btn btn-danger navbar-btn\">Register</button></a></li>" +
-            "      <li><a href=\"./logout\"><button class=\"btn btn-danger btn-md navbar-btn\">Logout</button></a></li>" +
+//            "      <li><a href=\"./logout\"><button class=\"btn btn-danger btn-md navbar-btn\">Logout</button></a></li>" +
             "    </ul>" +
             "  </div>" +
             "</nav>";

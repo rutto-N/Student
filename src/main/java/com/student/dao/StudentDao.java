@@ -2,6 +2,8 @@ package com.student.dao;
 
 import com.student.CrudI;
 import com.student.database.DbUtil;
+import com.student.enums.Gender;
+import com.student.enums.Grade;
 import com.student.models.Student;
 import com.student.models.User;
 
@@ -13,8 +15,8 @@ import java.util.List;
 public class StudentDao extends DbUtil implements CrudI<Student> {
     @Override
     public boolean add(Student student) {
-        String sql="INSERT INTO students(name,email,grade,phone) VALUES ('"+student.getName()+"','"+
-                student.getEmail()+"','" + student.getGrade()+"',"+student.getPhoneNumber()+")";
+        String sql="INSERT INTO students(name,email,grade,dob,gender,phone) VALUES ('"+student.getName()+"','"+
+                student.getEmail()+"','" + student.getGrade()+"','"+student.getDateOfBirth()+"','"+student.getGender()+"',"+student.getPhoneNumber()+")";
         System.out.println(sql);
 
         return execUpdate(sql);
@@ -35,7 +37,8 @@ public class StudentDao extends DbUtil implements CrudI<Student> {
                 student.setEmail(resultSet.getString(3));
                 student.setDateOfBirth(resultSet.getString(4));
                 student.setGrade(resultSet.getString(5));
-                student.setPhoneNumber(resultSet.getInt(6));
+                student.setGender(resultSet.getString(6));
+                student.setPhoneNumber(resultSet.getInt(7));
                 studentList.add(student);
 
             }

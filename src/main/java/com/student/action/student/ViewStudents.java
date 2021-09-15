@@ -2,8 +2,6 @@ package com.student.action.student;
 
 import com.student.dao.StudentDao;
 import com.student.models.Student;
-import com.student.models.User;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,7 +64,7 @@ public class ViewStudents extends HttpServlet {
             display.print("<td>" +student.getStudentId() + "</td>");
             display.print("<td>" +student.getName() + "</td>");
             display.print("<td>" +student.getEmail() + "</td>");
-            display.print("<td><a href=\"edit?id="+student.getStudentId()+"\"><button  class=\"btn btn-success btn-sm \">Edit</button></a></td>");
+            display.print("<td><a href=\"edit?id="+student.getStudentId()+"\"><button  class=\"btn btn-success btn-sm\">Edit</button></a></td>");
             display.print("<td><a href=\"delete?id="+student.getStudentId()+"\"><button class=\"btn btn-danger btn-sm text-center\">Delete</button></a>" +
                     "</td>");
 

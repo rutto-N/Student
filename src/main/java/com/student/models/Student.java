@@ -1,5 +1,8 @@
 package com.student.models;
 
+import com.student.enums.Gender;
+import com.student.enums.Grade;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,37 +12,21 @@ public class Student implements Serializable {
     private String name;
     private String email;
     private String dateOfBirth;
-    private  Date regDate;
+    private String gender;
     private String grade;
     private int phoneNumber;
 
     public Student(){
     }
 
-    public Student(String name, String email, String grade, int phoneNumber) {
-        this.name = name;
-        this.email = email;
-        this.grade = grade;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Student(int studentId, String name, String email, String dateOfBirth,
-                   Date regDate, String grade, int phoneNumber) {
+    public Student(int studentId, String name, String email, String dateOfBirth, String gender, String grade, int phoneNumber) {
         this.studentId = studentId;
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.regDate = regDate;
+        this.gender = gender;
         this.grade = grade;
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getStudentId() {
@@ -58,6 +45,14 @@ public class Student implements Serializable {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getDateOfBirth() {
         return dateOfBirth;
     }
@@ -66,12 +61,12 @@ public class Student implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Date getRegDate() {
-        return regDate;
+    public String getGender() {
+        return gender;
     }
 
-    public void setRegDate(Date regDate) {
-        this.regDate = regDate;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getGrade() {
@@ -88,17 +83,5 @@ public class Student implements Serializable {
 
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", name='" + name + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", regDate=" + regDate +
-                ", grade='" + grade + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                '}';
     }
 }

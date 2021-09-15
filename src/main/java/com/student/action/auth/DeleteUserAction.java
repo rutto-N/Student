@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 
 @WebServlet(
         name="DeleteUser",
-        urlPatterns ="/user/delete"
+        urlPatterns ="/users/delete"
 )
 public class DeleteUserAction extends HttpServlet {
     @Override

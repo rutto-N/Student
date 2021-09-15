@@ -2,6 +2,7 @@ package com.student.action.student;
 
 import com.student.dao.StudentDao;
 import com.student.database.DbUtil;
+import com.student.enums.Gender;
 import com.student.models.Student;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -14,7 +15,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.List;
 
 @WebServlet(name="AddStudent",urlPatterns ="/student/add" )
 
@@ -33,7 +37,7 @@ public class AddStudentAction extends HttpServlet {
             "      <li ><a href=\"../users/\">Users</a></li>" +
             "    </ul>" +
             "       <ul class=\"nav navbar-nav navbar-right\">" +
-            "      <li><a href=\"../logout\"><button class=\"btn btn-danger navbar-btn\">Logout</button></a></li>" +
+            "      <li><a href=\"../logout\"><span class=\"glyphicon glyphicon-log-in\"></span>Logout</button></a></li>" +
             "    </ul>" +
             "  </div>" +
             "</nav>";
@@ -45,11 +49,12 @@ public class AddStudentAction extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter display=resp.getWriter();
         display.println(HTML_START+""+NAVBAR);
+        List<Gender> enums=new ArrayList<>();
 
         display.println("<div class=\"row \">\n" );
 
 
-                display.println("<div class=\"col-md-4 col-md-offset-4\">\n" +
+        display.println("<div class=\"col-md-4 col-md-offset-4\">\n" +
                 "  <h2>Add Student </h2>\n" +
                 "  <form class=\"form-horizontal\" action=\"./add\" method=\"POST\">\n" +
                 "    <div class=\"form-group\">\n" +
@@ -60,22 +65,35 @@ public class AddStudentAction extends HttpServlet {
                 "      <label for=\"email\">Email:</label>\n" +
                 "      <input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" placeholder=\"Enter email\">\n" +
                 "    </div>\n" +
-//                "    <div class=\"form-group\">\n" +
-//                "      <label for=\"dateOfBirth\">Date Of Birth:</label>\n" +
-//                "      <input type=\"date\" class=\"form-control\" id=\"dateOfBirth\" name=\"dateOfBirth\" placeholder=\"Enter date of birth\">\n" +
-//                "    </div>\n" +
-                "  <div class=\"form-group\">\n" +
-                "      <label for=\"grade\">Grade:</label>\n" +
-                "      <input type=\"text\" class=\"form-control\" id=\"grade\" name=\"grade\" placeholder=\"Enter grade\">\n" +
+                "    <div class=\"form-group\">\n" +
+                "      <label for=\"dateOfBirth\">Date Of Birth:</label>\n" +
+                "      <input type=\"date\" class=\"form-control\" id=\"dateOfBirth\" name=\"dateOfBirth\" placeholder=\"Enter date of birth\">\n" +
                 "    </div>\n" +
+                "    <div class=\"form-group\">" +
+                "    <label for=\"grade\">Academic year:</label>\n" +
+                "    <select class=\"form-control\" name=\"grade\" id=\"grade\">\n" +
+                "               <option disabled selected value=\"\">------Select Year-----</option>\n" +
+                "               <option value=\"ONE\">1</option>\n" +
+                "               <option value=\"TWO\">2</option>\n" +
+                "               <option value=\"THREE\">3</option>\n" +
+                "               <option value=\"FOUR\">4</option>\n" +
+                "               </select>" +
+                "   </div>" +
+                "   <div class=\"form-group\">" +
+                "    <label for=\"gender\">Gender:</label>\n" +
+                "    <select class=\"form-control\" name=\"gender\" id=\"gender\">\n" +
+                "               <option disabled selected value=\"\">------Select Gender------</option>\n" +
+                "               <option value=\"MALE\">Male</option>\n" +
+                "               <option value=\"FEMALE\">Female</option>\n" +
+                "               </select>" +
+                "   </div>" +
                 "  <div class=\"form-group\">\n" +
                 "      <label for=\"phoneNumber\">Phone Number:</label>\n" +
                 "      <input type=\"number\" class=\"form-control\" id=\"phoneNumber\" name=\"phoneNumber\" placeholder=\"Enter phone number\">\n" +
                 "    </div>\n" +
                 "    <button type=\"submit\" class=\"btn btn-success\">Submit</button>\n" +
                 "  </form>\n" +
-                "</div>\n" +
-                        "</div>");
+                "</div></div>");
 
     }
 
