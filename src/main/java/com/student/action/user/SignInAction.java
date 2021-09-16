@@ -1,4 +1,4 @@
-package com.student.action.auth;
+package com.student.action.user;
 
 import com.student.dao.UserDao;
 import com.student.models.User;
@@ -93,7 +93,7 @@ public class SignInAction extends HttpServlet {
                 session.setAttribute("id",user.getId());
 
                 session.setAttribute("email",user.getEmail());
-                resp.sendRedirect("./users/view");
+                resp.sendRedirect("./course/view");
 
             }else
                 resp.sendRedirect("./login");

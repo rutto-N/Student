@@ -1,11 +1,8 @@
 package com.student.dao;
 
-import com.student.CrudI;
+import com.student.interfaces.CrudI;
 import com.student.database.DbUtil;
 import com.student.models.Course;
-import com.student.models.Student;
-import com.student.models.Teacher;
-import com.student.models.User;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -51,6 +48,32 @@ public class CourseDao extends DbUtil implements CrudI<Course> {
         String sql="DELETE FROM courses WHERE courseId="+course.getCourseId();
         return execUpdate(sql);
     }
+
+
+    public List<Course> searchNames(String name) {
+        List<Course> courseList=new ArrayList<>();
+        String sql="SELECT * FROM courses WHERE courseName="+name;
+        ResultSet resultSet=execQuery(sql);
+        try{
+            while (resultSet.next()) {
+                Course course = new Course();
+                course.setCourseId(resultSet.getInt(1));
+                course.setCourseAbbr(resultSet.getString(2));
+                course.setCourseName(resultSet.getString(3));
+
+                courseList.add(course);
+            }
+        }catch (Exception e){
+            e.getMessage();
+
+        }
+
+        return courseList;
+    }
+
+
+
+
 }
 
 

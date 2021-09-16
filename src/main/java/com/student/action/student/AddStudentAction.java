@@ -37,7 +37,7 @@ public class AddStudentAction extends HttpServlet {
             "      <li ><a href=\"../users/\">Users</a></li>" +
             "    </ul>" +
             "       <ul class=\"nav navbar-nav navbar-right\">" +
-            "      <li><a href=\"../logout\"><span class=\"glyphicon glyphicon-log-in\"></span>Logout</button></a></li>" +
+            "      <li><a href=\"../logout\"><button class=\"btn btn-danger navbar-btn\">Logout</button></a></li>" +
             "    </ul>" +
             "  </div>" +
             "</nav>";

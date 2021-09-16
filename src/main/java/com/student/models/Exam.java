@@ -1,8 +1,9 @@
 package com.student.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Exam extends Course{
+public class Exam extends Course implements Serializable {
 
     private int examId;
     private String examName;

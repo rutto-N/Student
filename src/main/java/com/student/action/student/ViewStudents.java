@@ -26,6 +26,11 @@ public class ViewStudents extends HttpServlet {
             "      <li ><a href=\"./\">Home</a></li>" +
             "      <li ><a href=\"./add\">add Student</a></li>" +
             "      <li ><a href=\"./view\">View Students</a></li>" +
+            "<form class=\"navbar-form navbar-left\" action=\"./search\" method=\"POST\">\n" +
+            "      <div class=\"form-group\">\n" +
+            "        <input type=\"text\" name=\"search\"class=\"form-control\" placeholder=\"name\">\n" +
+            "      </div>" +
+            "  <button type=\"submit\" class=\"btn btn-default\">Search</button></form>" +
             "    </ul>" +
             "       <ul class=\"nav navbar-nav navbar-right\">" +
             "      <li><a href=\"../logout\"><button class=\"btn btn-danger navbar-btn\">Logout</button></a></li>" +
@@ -52,7 +57,7 @@ public class ViewStudents extends HttpServlet {
 
         display.print("<table class=\"table table-center table-hover table-responsive table-bordered\">");
         display.print("<caption class=\"text-center\">Students</caption>");
-        display.print("<th class=\"text-center success\">Student ID</th>");
+//        display.print("<th class=\"text-center success\">Student ID</th>");
         display.print("<th class=\"text-center success\">Student Name</th>");
         display.print("<th class=\"text-center success\">Student Email</th>");
         display.print("<th class=\"text-center success\">Edit</th>");
@@ -61,7 +66,7 @@ public class ViewStudents extends HttpServlet {
 
         for (Student student : studentList) {
             display.print("<tr>");
-            display.print("<td>" +student.getStudentId() + "</td>");
+//            display.print("<td>" +student.getStudentId() + "</td>");
             display.print("<td>" +student.getName() + "</td>");
             display.print("<td>" +student.getEmail() + "</td>");
             display.print("<td><a href=\"edit?id="+student.getStudentId()+"\"><button  class=\"btn btn-success btn-sm\">Edit</button></a></td>");

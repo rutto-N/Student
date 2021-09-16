@@ -1,6 +1,6 @@
 package com.student.dao;
 
-import com.student.CrudI;
+import com.student.interfaces.CrudI;
 import com.student.database.DbUtil;
 import com.student.models.User;
 import com.student.utils.PasswordEncrypt;
@@ -52,6 +52,8 @@ public class UserDao  extends DbUtil implements CrudI<User>{
         return execUpdate(sql);
     }
 
+
+
     public User getUser(User user){
         String sql="SELECT * FROM users WHERE email='"+user.getEmail()+"' " +
                 "AND password='"+ PasswordEncrypt.encryptText(user.getPassword()) +"'";
@@ -59,7 +61,6 @@ public class UserDao  extends DbUtil implements CrudI<User>{
         try{
             while (rs.next()) {
 
-//
                 user.setId(rs.getInt(1));
                 user.setUsername(rs.getString(2));
                 user.setEmail(rs.getString(3));

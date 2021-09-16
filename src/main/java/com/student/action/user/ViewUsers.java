@@ -1,4 +1,4 @@
-package com.student.action.auth;
+package com.student.action.user;
 
 import com.student.dao.UserDao;
 import com.student.models.User;
@@ -26,10 +26,14 @@ public class ViewUsers extends HttpServlet {
             "      <li ><a href=\"./view\">Home</a></li>" +
             "      <li ><a href=\"../student/add\">add Student</a></li>" +
             "      <li ><a href=\"../student/\">View Students</a></li>" +
+            "<form class=\"navbar-form navbar-left\" action=\"./search\" method=\"POST\">\n" +
+            "      <div class=\"form-group\">\n" +
+            "        <input type=\"text\" name=\"search\" class=\"form-control\" placeholder=\"name\">\n" +
+            "      </div>" +
+            "  <button type=\"submit\" class=\"btn btn-default\">Search</button></form>" +
             "    </ul>" +
             "       <ul class=\"nav navbar-nav navbar-right\">" +
-//            "      <li><button class=\"btn btn-danger navbar-btn\">Register</button></li>" +
-            "      <li><a href=\"../logout\"><span class=\"glyphicon glyphicon-log-in\"></span>Logout</button></a></li>" +
+            "      <li><a href=\"../logout\"><button class=\"btn btn-danger navbar-btn\">Logout</button></a></li>" +
             "    </ul>" +
             "  </div>" +
             "</nav>";
@@ -52,7 +56,7 @@ public class ViewUsers extends HttpServlet {
 
         display.print("<table class=\"table center table-hover table-responsive table-bordered\">");
         display.print("<caption class=\"text-center\">Users</caption>");
-        display.print("<th class=\"text-center success\">User Id</th>");
+//        display.print("<th class=\"text-center success\">User Id</th>");
         display.print("<th class=\"text-center success\">Username</th>");
         display.print("<th class=\"text-center success\">Email</th>");
         display.print("<th class=\"text-center success\">Edit</th>");
@@ -61,7 +65,7 @@ public class ViewUsers extends HttpServlet {
 
         for (User user : users){
             display.print("<tr>");
-            display.print("<td>" + user.getId() + "</td>");
+//            display.print("<td>" + user.getId() + "</td>");
             display.print("<td>" + user.getUsername() + "</td>");
             display.print("<td>" + user.getEmail() + "</td>");
             display.print("<td><a><button class=\"btn btn-success btn-sm \">Edit</button></a></td>");

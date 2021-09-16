@@ -1,8 +1,6 @@
-package com.student.action.auth;
+package com.student.action.user;
 
-import com.student.dao.StudentDao;
 import com.student.dao.UserDao;
-import com.student.models.Student;
 import com.student.models.User;
 
 import javax.servlet.ServletException;

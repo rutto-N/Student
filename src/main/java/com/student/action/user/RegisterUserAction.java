@@ -1,4 +1,4 @@
-package com.student.action.auth;
+package com.student.action.user;
 
 import com.student.dao.UserDao;
 import com.student.models.User;

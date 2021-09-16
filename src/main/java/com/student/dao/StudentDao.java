@@ -1,11 +1,8 @@
 package com.student.dao;
 
-import com.student.CrudI;
+import com.student.interfaces.CrudI;
 import com.student.database.DbUtil;
-import com.student.enums.Gender;
-import com.student.enums.Grade;
 import com.student.models.Student;
-import com.student.models.User;
 
 
 import java.sql.ResultSet;
@@ -54,4 +51,7 @@ public class StudentDao extends DbUtil implements CrudI<Student> {
         String sql="DELETE FROM students WHERE studentId="+student.getStudentId();
         return execUpdate(sql);
     }
+
 }
+
+

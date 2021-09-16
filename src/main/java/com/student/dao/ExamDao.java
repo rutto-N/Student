@@ -1,6 +1,6 @@
 package com.student.dao;
 
-import com.student.CrudI;
+import com.student.interfaces.CrudI;
 import com.student.models.Exam;
 
 import java.util.List;
@@ -20,4 +20,8 @@ public class ExamDao implements CrudI<Exam> {
     public boolean delete(Exam exam) {
         return false;
     }
+
+
+
+
 }

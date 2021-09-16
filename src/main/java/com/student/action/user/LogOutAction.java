@@ -1,4 +1,4 @@
-package com.student.action.auth;
+package com.student.action.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

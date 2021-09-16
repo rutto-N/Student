@@ -1,10 +1,9 @@
 package com.student.models;
 
-import com.student.enums.Gender;
-import com.student.enums.Grade;
+
 
 import java.io.Serializable;
-import java.util.Date;
+
 
 public class Student implements Serializable {
 
@@ -83,5 +82,18 @@ public class Student implements Serializable {
 
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", grade='" + grade + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                '}';
     }
 }
