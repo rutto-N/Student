@@ -28,7 +28,7 @@ public class DeleteUserAction extends HttpServlet {
         UserDao userDao =new UserDao();
         if (userDao.delete(user)) {
             display.print("User was Deleted Successfully");
-            resp.sendRedirect("./view");
+            resp.sendRedirect("../view-users.jsp");
         }
         else{
             display.print("Something went wrong");

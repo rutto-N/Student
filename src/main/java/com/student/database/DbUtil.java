@@ -4,12 +4,10 @@ package com.student.database;
 import java.sql.*;
 
 public  class DbUtil {
+
     private Connection conn = null;
 
-
-
     public DbUtil() {
-
         try {
             conn= getDbConnection();
         } catch (SQLException e) {
@@ -17,11 +15,9 @@ public  class DbUtil {
         }
     }
 
-
-
     public Connection getDbConnection() throws SQLException {
 
-        conn = DataSource.getInstance().getConnection();
+        conn = DataS.getInstance().getConnection();
 
         return conn;
 

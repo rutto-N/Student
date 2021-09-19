@@ -1,7 +1,6 @@
 package com.student.action.course;
 
 import com.student.dao.CourseDao;
-import com.student.database.DbUtil;
 import com.student.models.Course;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -45,21 +44,22 @@ public class AddCourse extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter display=resp.getWriter();
         display.println(HTML_START+""+NAVBAR);
+        resp.sendRedirect("../add-course.jsp");
 
-        display.println("<div class=\"col-md-4 col-md-offset-4 \">\n" +
-                "  <h2>Add Student Form</h2>\n" +
-                "  <form action=\"./add\" method=\"POST\">\n" +
-                "    <div class=\"form-group\">\n" +
-                "      <label for=\"courseAbbr\">Course Abbr:</label>\n" +
-                "      <input type=\"text\" class=\"form-control\" id=\"courseAbbr\" name=\"courseAbbr\" placeholder=\"Course Abbr eg MAT 101\">\n" +
-                "    </div>\n" +
-                "    <div class=\"form-group\">\n" +
-                "      <label for=\"courseName\">Course Title:</label>\n" +
-                "      <input type=\"text\" class=\"form-control\" id=\"courseName\" name=\"courseName\" placeholder=\"Course Title eg Mathematics\">\n" +
-                "    </div>\n" +
-                "    <button type=\"submit\" class=\"btn btn-success\">Submit</button>\n" +
-                "  </form>\n" +
-                "</div>\n");
+//        display.println("<div class=\"col-md-4 col-md-offset-4 \">\n" +
+//                "  <h2>Add Student Form</h2>\n" +
+//                "  <form action=\"./add\" method=\"POST\">\n" +
+//                "    <div class=\"form-group\">\n" +
+//                "      <label for=\"courseAbbr\">Course Abbr:</label>\n" +
+//                "      <input type=\"text\" class=\"form-control\" id=\"courseAbbr\" name=\"courseAbbr\" placeholder=\"Course Abbr eg MAT 101\">\n" +
+//                "    </div>\n" +
+//                "    <div class=\"form-group\">\n" +
+//                "      <label for=\"courseName\">Course Title:</label>\n" +
+//                "      <input type=\"text\" class=\"form-control\" id=\"courseName\" name=\"courseName\" placeholder=\"Course Title eg Mathematics\">\n" +
+//                "    </div>\n" +
+//                "    <button type=\"submit\" class=\"btn btn-success\">Submit</button>\n" +
+//                "  </form>\n" +
+//                "</div>\n");
 
 
 
@@ -68,9 +68,6 @@ public class AddCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session=req.getSession();
-        PrintWriter display = resp.getWriter();
-        display.println(HTML_START);
-
         Course course=new Course();
 
         try {
@@ -88,11 +85,11 @@ public class AddCourse extends HttpServlet {
 
         CourseDao courseDao=new CourseDao();
         if (courseDao.add(course)){
-            resp.sendRedirect("../course/view");
+            resp.sendRedirect("../view-courses.jsp");
 
 
         }
-        resp.sendRedirect("./add");
+        resp.sendRedirect("./add-course.jsp");
 
 
 

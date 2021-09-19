@@ -1,9 +1,7 @@
 package com.student.action.course;
 
 import com.student.dao.CourseDao;
-import com.student.dao.StudentDao;
 import com.student.models.Course;
-import com.student.models.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +29,7 @@ public class DeleteCourseAction extends HttpServlet {
         CourseDao courseDao =new CourseDao();
         if (courseDao.delete(course)) {
             display.print("Course was Deleted Successfully");
-            resp.sendRedirect("./view");
+            resp.sendRedirect("./view-courses.jsp");
         }
         else{
             display.print("Something went wrong");

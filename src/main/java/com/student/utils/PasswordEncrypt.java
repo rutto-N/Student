@@ -20,9 +20,6 @@ public abstract class PasswordEncrypt {
         }
         
     }
-    public  static String decryptPassword(String text){
-        return null;
-    }
 
 
 

@@ -13,9 +13,8 @@ import java.util.List;
 
 @WebFilter(filterName = "LoginFilter",
         urlPatterns = "/*",
-
         initParams = {
-        @WebInitParam(name = "excluded",value ="/register,/login" )
+        @WebInitParam(name = "excluded",value ="/register,/login,/login.jsp,/add-user.jsp" )
         }
 
 )
@@ -42,7 +41,7 @@ public class LoginFilter implements Filter {
             session.invalidate();
 
             if (!excluded.contains(httpServletRequest.getServletPath()))
-                ((HttpServletResponse) response).sendRedirect("http://127.0.0.1:8080/SMS/login");
+                ((HttpServletResponse) response).sendRedirect("http://127.0.0.1:8080/SMS/login.jsp");
 
             else
                 chain.doFilter(request, response);

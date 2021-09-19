@@ -1,7 +1,6 @@
 package com.student.models;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class Teacher implements Serializable {
     private int teacherId;
@@ -9,18 +8,18 @@ public class Teacher implements Serializable {
     private String email;
     private String gender;
     private int phoneNumber;
-    Course course;
+    private int courseId;
 
     public Teacher() {
     }
 
-    public Teacher(int teacherId, String name, String email, String gender, int phoneNumber, Course course) {
+    public Teacher(int teacherId, String name, String email, String gender, int phoneNumber, int courseId) {
         this.teacherId = teacherId;
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
-        this.course = course;
+        this.courseId = courseId;
     }
 
     public int getTeacherId() {
@@ -63,11 +62,23 @@ public class Teacher implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Course getCourse() {
-        return course;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "teacherId=" + teacherId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", courseId=" + courseId +
+                '}';
     }
 }
