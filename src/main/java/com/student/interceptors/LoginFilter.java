@@ -14,13 +14,14 @@ import java.util.List;
 @WebFilter(filterName = "LoginFilter",
         urlPatterns = "/*",
         initParams = {
-        @WebInitParam(name = "excluded",value ="/register,/login,/login.jsp,/add-user.jsp" )
+                @WebInitParam(name = "excluded", value = "/register,/login,/login.jsp,/add-user.jsp")
         }
 
 )
 public class LoginFilter implements Filter {
 
     private List<String> excluded;
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         String excludePattern = filterConfig.getInitParameter("excluded");
@@ -37,7 +38,7 @@ public class LoginFilter implements Filter {
 
         HttpSession session = httpServletRequest.getSession();
 
-        if (session.isNew()){
+        if (session.isNew()) {
             session.invalidate();
 
             if (!excluded.contains(httpServletRequest.getServletPath()))
@@ -47,7 +48,7 @@ public class LoginFilter implements Filter {
                 chain.doFilter(request, response);
 
 
-        }else{
+        } else {
             chain.doFilter(request, response);
 
         }

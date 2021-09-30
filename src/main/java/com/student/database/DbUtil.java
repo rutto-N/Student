@@ -3,13 +3,14 @@ package com.student.database;
 
 import java.sql.*;
 
-public  class DbUtil {
+public class DbUtil {
 
-    private Connection conn = null;
+    private Connection conn;
+    PreparedStatement statement;
 
     public DbUtil() {
         try {
-            conn= getDbConnection();
+            conn = getDbConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -28,8 +29,8 @@ public  class DbUtil {
             return null;
 
         try {
-            PreparedStatement statement = conn.prepareStatement(sql);
-            return statement.executeQuery();
+            statement = conn.prepareStatement(sql);
+            return statement.executeQuery(sql);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -45,8 +46,8 @@ public  class DbUtil {
             return false;
 
         try {
-            PreparedStatement statement = getDbConnection().prepareStatement(sql);
-            statement.executeUpdate();
+            statement = conn.prepareStatement(sql);
+            statement.executeUpdate(sql);
             return true;
 
         } catch (Exception ex) {
@@ -57,9 +58,13 @@ public  class DbUtil {
 
     }
 
-    public void closeConnection(){
+    public void closeConnection() {
         try {
-            conn.close();
+            if (conn != null && statement != null) {
+                statement.close();
+                conn.close();
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,6 +72,7 @@ public  class DbUtil {
 
     @Override
     protected void finalize() throws Throwable {
-        closeConnection();
+        this.closeConnection();
+
     }
 }

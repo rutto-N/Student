@@ -11,29 +11,81 @@
     <title></title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <style>
+        @media all and (min-width: 992px) {
+            .navbar .nav-item .dropdown-menu{ display: none; }
+            .navbar .nav-item:hover .nav-link{   }
+            .navbar .nav-item:hover .dropdown-menu{ display: block; }
+            .navbar .nav-item .dropdown-menu{ margin-top:0; }
+        }
+    </style>
 
 </head>
 <body>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Student Management</a>
+            <a class="navbar-brand">Student Management</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="./view-students.jsp">Home</a></li>
-            <li><a href="./view-students.jsp">Students</a></li>
-            <li><a href="./view-courses.jsp">Courses</a></li>
-            <li><a href="./view-students.jsp">Teachers</a></li>
-            <li><a href="./view-users.jsp">Enrolments</a></li>
-            <li><a href="./view-students.jsp">Exams</a></li>
-
+            <li class="nav-item"><a href="./view-students.jsp">Home</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown">Courses</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="./add-course.jsp"> New Course </a></li>
+                    <li><a class="dropdown-item" href="./view-courses.jsp"> All Courses </a></li>
+                </ul>
+            </li>
+<%--            <li class="nav-item"><a href="./view-students.jsp">Teachers</a></li>--%>
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle"  data-bs-toggle="dropdown">Enrolments</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="./enrol.jsp"> Enrol </a></li>
+                    <li><a class="dropdown-item" href="./view-enrolments.jsp"> My enrolments </a></li>
+                    <li><a class="dropdown-item" href="./view-all-enrolments.jsp"> All enrolments </a></li>
+                </ul>
+            </li>
+<%--            <li class="nav-item"><a href="./view-students.jsp">Exams</a></li>--%>
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown">Students</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="./add-student.jsp"> New Student </a></li>
+                    <li><a class="dropdown-item" href="./view-students.jsp"> All Students </a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle"  data-bs-toggle="dropdown">Users</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="./add-user.jsp"> New User </a></li>
+                    <li><a class="dropdown-item" href="./view-users.jsp"> All Users </a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle"  data-bs-toggle="dropdown">Teachers</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="./add-teacher.jsp"> New Teacher </a></li>
+                    <li><a class="dropdown-item" href="./view-teachers.jsp"> All Teachers </a></li>
+                </ul>
+            </li>
+<%--            <li  class="nav-item navbar-center"> <span class="text-white"><%=session.getAttribute("email")%></span></li>--%>
 
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="./logout"><span class="material-icons md-24">&#xe9ba;</span></a></li>
-        </ul>
+        <div class="navbar-right">
+            <li class="nav-item">
+                <span class="text-white"></span>
+                <div>
+                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <span class="material-icons md-24">&#xe853;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="./logout">Logout</a></li>
+                        <li><%=session.getAttribute("email")%></li>
+                    </ul>
+                </div>
+            </li>
+        </div>
     </div>
 </nav>
+
 
 </body>
 </html>

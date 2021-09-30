@@ -12,10 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-
 @WebServlet(
-        name="DeleteStudent",
-        urlPatterns ="/student/delete"
+        name = "DeleteStudent",
+        urlPatterns = "/student/delete"
 )
 public class DeleteStudentAction extends HttpServlet {
 
@@ -23,17 +22,16 @@ public class DeleteStudentAction extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter display = resp.getWriter();
-        Student student =new Student();
+        Student student = new Student();
 
         student.setStudentId(Integer.parseInt(req.getParameter("id")));
 
         System.out.println(student);
-        StudentDao studentDao =new StudentDao();
+        StudentDao studentDao = new StudentDao();
         if (studentDao.delete(student)) {
             display.print("Student was Deleted Successfully");
-            resp.sendRedirect("./view-student.jsp");
-        }
-        else{
+            resp.sendRedirect("../view-students.jsp");
+        } else {
             display.print("Something went wrong");
         }
 

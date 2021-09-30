@@ -3,7 +3,7 @@ package com.student.models;
 import java.io.Serializable;
 import java.util.List;
 
-public class Exam extends Course implements Serializable {
+public class Exam implements Serializable {
 
     private int examId;
     private String examName;
@@ -17,21 +17,7 @@ public class Exam extends Course implements Serializable {
         this.grade = grade;
     }
 
-    public Exam(int courseId, String courseAbbr, String courseName, int examId, String examName, List<Student> studentList, String grade) {
-        super(courseId, courseAbbr, courseName);
-        this.examId = examId;
-        this.examName = examName;
-        this.studentList = studentList;
-        this.grade = grade;
-    }
-
-    public Exam(int courseId,
-                int examId, String examName, List<Student> studentList, String grade) {
-        super(courseId);
-        this.examId = examId;
-        this.examName = examName;
-        this.studentList = studentList;
-        this.grade = grade;
+    public Exam() {
     }
 
     public int getExamId() {

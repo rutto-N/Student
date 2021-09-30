@@ -10,22 +10,22 @@ public class DataS {
 
     private DataSource dataSource;
 
-    private DataS(){
+    private DataS() {
 
         try {
-            InitialContext initialContext=new InitialContext();
-            dataSource= (DataSource) initialContext.lookup("java:jboss/datasources/sms");
+            InitialContext initialContext = new InitialContext();
+            dataSource = (DataSource) initialContext.lookup("java:jboss/datasources/sms");
         } catch (NamingException e) {
             e.printStackTrace();
         }
 
     }
-
-    public static DataSource getInstance(){
+//singleton class
+    public static DataSource getInstance() {
         if (ds == null)
             ds = new DataS().getDataSource();
 
-        return  ds;
+        return ds;
     }
 
     public DataSource getDataSource() {

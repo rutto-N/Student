@@ -1,7 +1,7 @@
 package com.student.action.course;
 
-import com.student.dao.CourseDao;
-import com.student.models.Course;
+import com.student.dao.UnitDao;
+import com.student.models.Unit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,25 +13,24 @@ import java.io.PrintWriter;
 
 
 @WebServlet(
-        name="DeleteCourse",
-        urlPatterns ="/course/delete"
+        name = "DeleteCourse",
+        urlPatterns = "/course/delete"
 )
 public class DeleteCourseAction extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter display = resp.getWriter();
-        Course course =new Course();
+        Unit unit = new Unit();
 
-        course.setCourseId(Integer.parseInt(req.getParameter("id")));
+        unit.setCourseId(Integer.parseInt(req.getParameter("id")));
 
-        System.out.println(course);
-        CourseDao courseDao =new CourseDao();
-        if (courseDao.delete(course)) {
+        System.out.println(unit);
+        UnitDao unitDao = new UnitDao();
+        if (unitDao.delete(unit)) {
             display.print("Course was Deleted Successfully");
-            resp.sendRedirect("./view-courses.jsp");
-        }
-        else{
+            resp.sendRedirect("../view-courses.jsp");
+        } else {
             display.print("Something went wrong");
         }
 

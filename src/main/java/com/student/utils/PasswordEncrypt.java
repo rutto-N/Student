@@ -8,8 +8,8 @@ import java.security.NoSuchAlgorithmException;
 
 
 public abstract class PasswordEncrypt {
-    
-    public static String encryptText(String password){
+
+    public static String encryptText(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] output = md.digest(password.getBytes());
@@ -18,9 +18,8 @@ public abstract class PasswordEncrypt {
             e.printStackTrace();
             return null;
         }
-        
-    }
 
+    }
 
 
 }

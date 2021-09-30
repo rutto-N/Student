@@ -9,6 +9,7 @@ public class Teacher implements Serializable {
     private String gender;
     private int phoneNumber;
     private int courseId;
+    private String courseName;
 
     public Teacher() {
     }
@@ -20,6 +21,14 @@ public class Teacher implements Serializable {
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.courseId = courseId;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public int getTeacherId() {

@@ -8,15 +8,24 @@ public class User implements Serializable {
     private String username;
     private String email;
     private String password;
+    private int roleId;
 
     public User() {
     }
 
-    public User( String username, String email, String password) {
+    public User(String username, String email, String password) {
 
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public int getId() {
@@ -54,9 +63,11 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", roleId=" + roleId +
                 '}';
     }
 }

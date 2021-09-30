@@ -7,10 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.student.models.Course" %>
-<%@ page import="com.student.dao.CourseDao" %>
+<%@ page import="com.student.models.Unit" %>
+<%@ page import="com.student.dao.UnitDao" %>
 <%@ page import="com.student.enums.Gender" %>
 <%@ page import="java.util.Arrays" %>
+<%@ page import="com.student.dao.UnitDao" %>
+<%@ page import="com.student.models.Unit" %>
 <html>
 <head>
     <title>Add Teacher</title>
@@ -21,10 +23,10 @@
 </head>
 <body>
 <jsp:include page="nav-bar.jsp"></jsp:include>
-<% List<Course> courseList=new CourseDao().view();
+<% List<Unit> unitList =new UnitDao().view();
     List<Gender> genderValues = Arrays.asList(Gender.values());%>
 
-<div class="row ">
+<div class="container ">
 <div class="col-md-4 col-md-offset-4">
 <h2>Add Teacher </h2>
 <form class="form-horizontal" action="./teacher/add" method="POST">
@@ -41,8 +43,8 @@
           <select class="form-control" name="courseId" id="courseId">
 
               <option disabled selected value="">------Select Course-----</option>
-              <% for (Course course:courseList) {%>
-              <option value="<%=course.getCourseId()%>"><%=course.getCourseName()%></option>
+              <% for (Unit unit : unitList) {%>
+              <option value="<%=unit.getCourseId()%>"><%=unit.getCourseAbbr()%></option>
               <%
 
               }%>

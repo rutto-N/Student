@@ -1,7 +1,8 @@
 <%@ page import="com.student.enums.Gender" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.student.enums.Grade" %><%--
+<%@ page import="com.student.enums.Grade" %>
+<%@ page import="com.student.enums.Course" %><%--
   Created by IntelliJ IDEA.
   User: Tee
   Date: 17/09/2021
@@ -19,10 +20,12 @@
 </head>
 <body>
 <jsp:include page="nav-bar.jsp"></jsp:include>
-<%List<Gender> genderValues = Arrays.asList(Gender.values());%>
+<%List<Gender> genderValues = Arrays.asList(Gender.values());%>//
 <%List<Grade> grades = Arrays.asList(Grade.values());%>
+<%List<Course> courseList = Arrays.asList(Course.values());%>
 
-<div class="row "> 
+
+<div class="container ">
 <div class="col-md-4 col-md-offset-4">
   <h2>Add Student </h2>
   <form class="form-horizontal" action="./student/add" method="POST">
@@ -38,6 +41,16 @@
               <label for="dateOfBirth">Date Of Birth:</label>
               <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="Enter date of birth">
             </div>
+      <div class="form-group">
+          <label for="course">Course:</label>
+          <select class="form-control" name="course" id="course">
+              <option disabled selected value="">------Select Year-----</option>
+              <% for (Course course:courseList) {%>
+              <option value="<%=course.name()%>"><%=course.getDisplayName()%></option>
+              <%
+                  }%>
+          </select>
+      </div>
         <div class="form-group">
             <label for="grade">Academic year:</label>
             <select class="form-control" name="grade" id="grade">

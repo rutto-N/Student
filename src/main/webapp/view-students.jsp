@@ -21,11 +21,11 @@
 <body>
 
 <jsp:include page="nav-bar.jsp"></jsp:include>
-<% List<Student> studentList=new StudentDao().view();%>
-<div class="row ">
-    <div class="col-md-8 col-md-offset-2">
+<% List<Student> studentList=new StudentDao().view(); %>
+<div class="container ">
+    <div class="col-md-8 col-md-offset-2 ">
 
-        <form class="form-inline  col-md-offset-8">
+        <form class="form-inline col-md-offset-8">
             <div class="form-group ">
                 <%--                <span><i class="material-icons md-18">&#xe8b6;</i></span>--%>
                 <input type="text" id="search" onkeyup="searchTable()" class="form-control " name="search" placeholder="Type name here...">

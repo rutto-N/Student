@@ -13,8 +13,8 @@
 </head>
 <body>
 
-<div class="card-body col-md-4 col-md-offset-4 ">
-    <h2>Login Form</h2>
+<div class=" col-md-4 col-md-offset-4 ">
+    <h2>Login</h2>
     <hr>
     <form action="./login" method="POST">
         <div class="form-group">

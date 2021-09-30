@@ -18,7 +18,7 @@
 <jsp:include page="nav-bar.jsp"></jsp:include>
 
 <div class="container col-md-4 col-md-offset-4 ">
-<h2>Registration Form</h2>
+<h2>Registration </h2>
 <form action="./register" method="POST">
       <div class="form-group">
             <label for="username">Username:</label>

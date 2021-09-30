@@ -1,9 +1,6 @@
 package com.student.models;
 
-
-
 import java.io.Serializable;
-
 
 public class Student implements Serializable {
 
@@ -14,18 +11,26 @@ public class Student implements Serializable {
     private String gender;
     private String grade;
     private int phoneNumber;
+    private String course;
+    private int createdBy;
 
-    public Student(){
+    public Student() {
     }
 
-    public Student(int studentId, String name, String email, String dateOfBirth, String gender, String grade, int phoneNumber) {
-        this.studentId = studentId;
-        this.name = name;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.grade = grade;
-        this.phoneNumber = phoneNumber;
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
     }
 
     public int getStudentId() {

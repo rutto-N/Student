@@ -2,22 +2,38 @@ package com.student.models;
 
 import java.io.Serializable;
 
-public class Course implements Serializable {
+public class Unit implements Serializable {
     private int courseId;
     private String courseAbbr;
     private String courseName;
+    private String gradeId;
+    private String course;
 
-    public Course() {
+    public Unit() {
     }
 
-    public Course(int courseId, String courseAbbr, String courseName) {
+    public Unit(int courseId, String courseAbbr, String courseName, String gradeId, String course) {
         this.courseId = courseId;
         this.courseAbbr = courseAbbr;
         this.courseName = courseName;
+        this.gradeId = gradeId;
+        this.course = course;
     }
 
-    public Course(int courseId) {
+    public String getCourse() {
+        return course;
+    }
 
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getGradeId() {
+        return gradeId;
+    }
+
+    public void setGradeId(String gradeId) {
+        this.gradeId = gradeId;
     }
 
     public int getCourseId() {
@@ -50,6 +66,7 @@ public class Course implements Serializable {
                 "courseId=" + courseId +
                 ", courseAbbr='" + courseAbbr + '\'' +
                 ", courseName='" + courseName + '\'' +
+                ", gradeId=" + gradeId +
                 '}';
     }
 }
